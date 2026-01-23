@@ -9,6 +9,9 @@ $router->post('login', 'AuthController@login');
 $router->get('/refresh', 'AuthController@refresh');
 $router->delete('/refresh', 'AuthController@logout');
 $router->delete('/refresh/all', 'AuthController@logoutAll');
+$router->post('/newActivity', 'ActivityController@new');
+$router->get('/newActivity', 'ActivityController@getAll');
+$router->delete('/newActivity/{id}', 'ActivityController@deleteActivity');
 
 $router->group(['middleware' => 'auth.jwt'], function() use ($router){
     $router->get('/protected', 'ExampleController@protected');
