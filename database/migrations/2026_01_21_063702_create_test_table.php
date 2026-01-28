@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('Activities', function (Blueprint $table) {
             $table -> id();
-            $table->string('name')->unique();
+            $table->string('name',50)->unique();
             $table->boolean('farBool')->default(0);
             $table->string('farUnit', 10);
             $table->boolean('timeBool')->default(0);
