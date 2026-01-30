@@ -45,4 +45,17 @@ class WorkoutController extends Controller
             return response()->json(['data' => null, 'error' => $e->getMessage()]);
         }
     }
+
+    public function delete(Request $request){
+        try {
+            $id = filter_var($request->route('id'), FILTER_VALIDATE_INT);
+
+            DB::table('workouts')->where('id', $id)->delete();
+            
+            return response()->json(['data' => "workout deleted", 'error' => "no error"]);
+        } catch (\Exception $e) {
+            response()->json(['data' => null, 'error' => $e->getMessage()]);
+        }
+
+    }
 }
